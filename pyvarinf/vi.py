@@ -89,6 +89,8 @@ def sub_prior_loss(dico):
     """
     loss = 0
     for p in dico.values():
+        if p is None:
+          continue
         if isinstance(p, VariationalParameter):
             mean = p.mean
             std = (1 + p.rho.exp()).log()
